@@ -12,6 +12,7 @@ namespace Serie.Interface
         T RetornadoPorId(int id);
         void Inserir(T entidade);
         void Atualiza(int id, T entidade);
+        void  Excluir(int id);
         int ProximoId();
     }
 }

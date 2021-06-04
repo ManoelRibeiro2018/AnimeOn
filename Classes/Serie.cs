@@ -13,6 +13,7 @@ namespace Serie.Classes
         private int Titulo { get; set; }
         private string Descricao { get; set; }
         private int Ano { get; set; }
+        private bool Excluido { get; set; }
 
         public Serie(int id, GeneroEnum genero, int titulo, string descricao, int ano)
         {
@@ -21,6 +22,16 @@ namespace Serie.Classes
             Titulo = titulo;
             Descricao = descricao;
             Ano = ano;
+            Excluido = false;
+        }
+
+        public int RetornaID()
+        {
+            return this.Id;
+        }
+        public void Excluir()
+        {
+            Excluido = true;
         }
         public override string ToString()
         {
