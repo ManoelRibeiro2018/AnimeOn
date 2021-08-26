@@ -10,7 +10,7 @@ namespace Serie
 {
     class Program
     {
-        private  static AnimeRepositorio _animeRepositorio = new AnimeRepositorio();
+        private static AnimeRepositorio _animeRepositorio = new AnimeRepositorio();
         static void Main(string[] args)
         {
             string opcaoUsuario = OpcaoMenu();
@@ -26,16 +26,16 @@ namespace Serie
                         InserirAnime();
                         break;
                     case "3":
-                       // _animeRepositorio.Atualiza();
+                        AtualizarSerie();
                         break;
                     case "4":
-                     //   _animeRepositorio.Excluir();
+                        Excluir();
                         break;
                     case "5":
-                      //  _animeRepositorio.Visualizar();
+                        Visualizar();
                         break;
-                    case"C":
-                           Console.Clear();
+                    case "C":
+                        Console.Clear();
                         break;
 
                     default:
@@ -57,7 +57,7 @@ namespace Serie
             Console.WriteLine("C -- Limpar tela");
             Console.WriteLine("X - Sair");
             Console.WriteLine();
-            return  Console.ReadLine().ToUpper();
+            return Console.ReadLine().ToUpper();
         }
 
 
@@ -74,7 +74,7 @@ namespace Serie
             }
             foreach (var anime in lista)
             {
-                Console.WriteLine("#ID{0}: - {1}", anime.RetornaID(), anime.RetornaTitulo());
+                Console.WriteLine("#ID{0}: - {1} - {2}", anime.RetornaID(), anime.RetornaTitulo(), (anime.RetornaExluido() ? "Excluido" : ""));
             }
         }
 
@@ -83,7 +83,7 @@ namespace Serie
             Console.WriteLine("Inserindo Anime");
             foreach (int item in Enum.GetValues(typeof(GeneroEnum)))
             {
-                Console.WriteLine("{0} - {1}", item, Enum.GetName(typeof(GeneroEnum),item));
+                Console.WriteLine(" {0} - {1}", item, Enum.GetName(typeof(GeneroEnum), item));
             }
 
             Console.WriteLine("Digite o genêro entre as opções acima: ");
@@ -102,6 +102,53 @@ namespace Serie
 
             _animeRepositorio.Inserir(serie);
         }
-        
+
+        private static void AtualizarSerie()
+        {
+            Console.WriteLine("Digite o código da série: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Inserindo Anime");
+            foreach (int item in Enum.GetValues(typeof(GeneroEnum)))
+            {
+                Console.WriteLine(" {0} - {1}", item, Enum.GetName(typeof(GeneroEnum), item));
+            }
+
+            Console.WriteLine("Digite o genêro entre as opções acima: ");
+            int genero = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o Titulo da série: ");
+            string titulo = Console.ReadLine();
+
+            Console.WriteLine("Digite o ano de início da ´serie: ");
+            int ano = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a descrição da série: ");
+            string descricao = Console.ReadLine();
+
+            var serie = new Series(id, (GeneroEnum)genero, titulo, descricao, ano);
+
+            _animeRepositorio.Atualiza(id, serie);
+        }
+
+        public static void Excluir()
+        {
+            Console.WriteLine("Digite o ID da série: ");
+            int id = int.Parse(Console.ReadLine());
+
+            _animeRepositorio.Excluir(id);
+        }
+
+        public static void Visualizar()
+        {
+            Console.WriteLine("Digite o ID da série: ");
+            int id = int.Parse(Console.ReadLine());
+
+            var serie = _animeRepositorio.RetornaPorId(id);
+
+            Console.WriteLine(serie.ToString());
+        }
+
+
     }
 }

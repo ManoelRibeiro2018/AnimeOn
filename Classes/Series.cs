@@ -27,11 +27,15 @@ namespace Serie.Classes
 
         public int RetornaID()
         {
-            return this.Id;
+            return Id;
         }
         public string RetornaTitulo()
         {
-            return this.Titulo;
+            return Titulo;
+        }
+        public bool RetornaExluido()
+        {
+            return Excluido;
         }
         public void Excluir()
         {
@@ -42,7 +46,8 @@ namespace Serie.Classes
             return "Gênero: " + this.Genero + Environment.NewLine
                 + "Título: " + this.Titulo + Environment.NewLine
                 + "Descrição: " + this.Descricao + Environment.NewLine
-                + "Ano de início: " + this.Ano;
+                + "Ano de início: " + this.Ano + Environment.NewLine
+                + "Excluido: " + this.Excluido + Environment.NewLine;
         }
     }
 }
