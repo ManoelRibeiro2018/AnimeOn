@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace Serie.Classes
 {
-    class SeriaRepositorio : IRepositorio<Serie>
+    class AnimeRepositorio : IRepositorio<Series>
     {
-        public List<Serie> ListaSerie = new List<Serie>();
-       
-
-        public void Inserir(Serie entidade)
+        public List<Series> ListaSerie = new List<Series>();
+        public void Inserir(Series entidade)
         {
             ListaSerie.Add(entidade);
         }
-        public void Atualiza(int id, Serie entidade)
+        public void Atualiza(int id, Series entidade)
         {
             ListaSerie[id] = entidade;
         }
@@ -26,7 +24,7 @@ namespace Serie.Classes
             ListaSerie[id].Excluir();
         }
 
-        public List<Serie> Lista()
+        public List<Series> Lista()
         {
             return ListaSerie;
         }
@@ -36,9 +34,10 @@ namespace Serie.Classes
             return ListaSerie.Count;
         }
 
-        public Serie RetornadoPorId(int id)
+        public Series RetornaPorId(int id)
         {
             return ListaSerie[id];
         }
+       
     }
 }

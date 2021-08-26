@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Serie.Classes
 {
-    class Serie : EntidadeBase
+    class Series : EntidadeBase
     {
-        private GeneroEnum Genero { get; set; }
-        private int Titulo { get; set; }
+        public GeneroEnum Genero { get; set; }
+        private string Titulo { get; set; }
         private string Descricao { get; set; }
         private int Ano { get; set; }
         private bool Excluido { get; set; }
 
-        public Serie(int id, GeneroEnum genero, int titulo, string descricao, int ano)
+        public Series(int id, GeneroEnum genero, string titulo, string descricao, int ano)
         {
             this.Id = id;
             Genero = genero;
@@ -29,13 +29,20 @@ namespace Serie.Classes
         {
             return this.Id;
         }
+        public string RetornaTitulo()
+        {
+            return this.Titulo;
+        }
         public void Excluir()
         {
             Excluido = true;
         }
         public override string ToString()
         {
-            return base.ToString();
+            return "Gênero: " + this.Genero + Environment.NewLine
+                + "Título: " + this.Titulo + Environment.NewLine
+                + "Descrição: " + this.Descricao + Environment.NewLine
+                + "Ano de início: " + this.Ano;
         }
     }
 }

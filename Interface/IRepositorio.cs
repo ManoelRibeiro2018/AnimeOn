@@ -9,7 +9,7 @@ namespace Serie.Interface
     public interface IRepositorio<T>
     {
         List<T> Lista();
-        T RetornadoPorId(int id);
+        T RetornaPorId(int id);
         void Inserir(T entidade);
         void Atualiza(int id, T entidade);
         void  Excluir(int id);
