@@ -49,11 +49,11 @@ namespace Serie
         {
             Console.WriteLine();
             Console.WriteLine("Animes On!!!!!");
-            Console.WriteLine("1 - Listar animes");
-            Console.WriteLine("2 - Inserir novo anime");
-            Console.WriteLine("3 - Atualizar  anime");
-            Console.WriteLine("4 - Excluir Anime");
-            Console.WriteLine("5 - Visualizar anime");
+            Console.WriteLine("1 - Listar Série");
+            Console.WriteLine("2 - Inserir novo Série");
+            Console.WriteLine("3 - Atualizar  Série");
+            Console.WriteLine("4 - Excluir Série");
+            Console.WriteLine("5 - Visualizar Série");
             Console.WriteLine("C -- Limpar tela");
             Console.WriteLine("X - Sair");
             Console.WriteLine();
@@ -105,10 +105,10 @@ namespace Serie
 
         private static void AtualizarSerie()
         {
-            Console.WriteLine("Digite o código da série: ");
+            Console.WriteLine("Digite o código da Série: ");
             int id = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Inserindo Anime");
+            Console.WriteLine("Inserindo Série");
             foreach (int item in Enum.GetValues(typeof(GeneroEnum)))
             {
                 Console.WriteLine(" {0} - {1}", item, Enum.GetName(typeof(GeneroEnum), item));
